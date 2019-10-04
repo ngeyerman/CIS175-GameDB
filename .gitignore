@@ -2,6 +2,7 @@
 /target/
 # Compiled class file
 *.class
+.settings/
 persistence.xml
 
 # Log file
