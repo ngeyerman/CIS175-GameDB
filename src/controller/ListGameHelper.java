@@ -13,7 +13,7 @@ public class ListGameHelper {//creates methods to find objects, persist, remove,
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("GameDB");
 
 
-	public void insertGame(ListGame lg) {
+	public void insertGame(ListGame lg) { //method to add game to sql database
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(lg);
@@ -21,7 +21,7 @@ public class ListGameHelper {//creates methods to find objects, persist, remove,
 		em.close();
 	}
 	
-	public List<ListGame> showAllGames() {
+	public List<ListGame> showAllGames() { //list to show all games in database
 		EntityManager em = emfactory.createEntityManager();
 		List<ListGame> allGames = em.createQuery("SELECT i FROM ListGame i").getResultList();
 		return allGames;

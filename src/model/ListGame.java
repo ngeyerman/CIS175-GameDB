@@ -100,7 +100,7 @@ public class ListGame {
 	}
 	
 	public String returnGameDetails() {
-		return " Game - "+gameName+ " - Genre - " +genre+ " - Console - " +gameConsole;
+		return " Game -- "+gameName+ " -- Genre -- " +genre+ " -- Console -- " +gameConsole;
 				
 	}
 
