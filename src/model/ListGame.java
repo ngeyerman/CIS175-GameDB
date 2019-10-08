@@ -50,6 +50,13 @@ public class ListGame {
 		this.genre = genre;
 		this.gameConsole = gameConsole;
 	}
+	
+	
+
+	public ListGame(String gameName) {
+		super();
+		this.gameName = gameName;
+	}
 
 	public int getId() {
 		return id;

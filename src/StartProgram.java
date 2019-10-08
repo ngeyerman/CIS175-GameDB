@@ -24,52 +24,77 @@ public class StartProgram {
 
 	}
 
-	private static void deleteAnItem() {
+	private static void deleteAGame() {
 		// TODO Auto-generated method stub
-		System.out.print("Enter the store to delete: ");
-		String store = in.nextLine();
-		System.out.print("Enter the item to delete: ");
-		String item = in.nextLine();
+		System.out.print("Enter the game to delete: ");
+		String game = in.nextLine();
 
+		ListGame toDelete = new ListGame(game);
+		lgh.deleteGame(toDelete);
 	}
 
-	private static void editAnItem() {
+	private static void editAGame() {
 		// TODO Auto-generated method stub
+		
 		System.out.println("How would you like to search? ");
-		System.out.println("1 : Search by Store");
-		System.out.println("2 : Search by Item");
+		System.out.println("1 : Search by Game");
+		System.out.println("2 : Search by Genre");
+		System.out.println("3 : Search by Console");
 		int searchBy = in.nextInt();
 		in.nextLine();
-		/*
-		 * List<ListItem> foundItems; if (searchBy == 1) {
-		 * System.out.print("Enter the store name: "); String storeName = in.nextLine();
-		 * 
-		 * } else { System.out.print("Enter the item: "); String itemName =
-		 * in.nextLine();
-		 * 
-		 * 
-		 * }
-		 * 
-		 * if (!foundItems.isEmpty()) { System.out.println("Found Results."); for
-		 * (ListItem l : foundItems) { System.out.println(l.getId() + " : " +
-		 * l.toString()); } System.out.print("Which ID to edit: "); int idToEdit =
-		 * in.nextInt();
-		 * 
-		 * ListItem toEdit = lih.searchForItemById(idToEdit);
-		 * System.out.println("Retrieved " + toEdit.getItem() + " from " +
-		 * toEdit.getStore()); System.out.println("1 : Update Store");
-		 * System.out.println("2 : Update Item"); int update = in.nextInt();
-		 * in.nextLine();
-		 * 
-		 * if (update == 1) { System.out.print("New Store: "); String newStore =
-		 * in.nextLine(); toEdit.setStore(newStore); } else if (update == 2) {
-		 * System.out.print("New Item: "); String newItem = in.nextLine();
-		 * toEdit.setItem(newItem); }
-		 * 
-		 * lih.updateItem(toEdit);
-		 * 
-		 * } else { System.out.println("---- No results found"); }
-		 */
+		List<ListGame> foundGames;
+		if (searchBy == 1) {
+			System.out.print("Enter the game name: ");
+			String name = in.nextLine();
+			foundGames = lgh.searchForGameByName(name);
+
+		} else if (searchBy==2){
+			System.out.print("Enter the genre: ");
+			String genre = in.nextLine();
+			foundGames = lgh.searchForGameByGenre(genre);
+
+		}else {
+			System.out.println("Enter the console: ");
+			String console = in.nextLine();
+			foundGames = lgh.searchForGameByConsole(console);
+		}
+
+		if (!foundGames.isEmpty()) {
+			System.out.println("Found Results.");
+			for (ListGame l : foundGames) {
+				System.out.println(l.getId() + " : " + l.toString());
+			}
+			System.out.print("Which ID to edit: ");
+			int idToEdit = in.nextInt();
+
+			ListGame toEdit = lgh.searchForGameById(idToEdit);
+			System.out.println("Retrieved " + toEdit.getGameName() + " from " + toEdit.getGenre());
+			System.out.println("1 : Update Name");
+			System.out.println("2 : Update Genre");
+			System.out.println("3 : Update Console");
+			int update = in.nextInt();
+			in.nextLine();
+
+			if (update == 1) {
+				System.out.print("New Game Name: ");
+				String newName = in.nextLine();
+				toEdit.setGameName(newName);
+			} else if (update == 2) {
+				System.out.print("New Genre: ");
+				String newGenre = in.nextLine();
+				toEdit.setGenre(newGenre);
+			} else if(update ==3) {
+				System.out.println("New Console: ");
+				String newConsole = in.nextLine();
+				toEdit.setGameConsole(newConsole);
+			}
+
+			lgh.updateGame(toEdit);
+
+		} else {
+			System.out.println("---- No results found");
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -80,7 +105,7 @@ public class StartProgram {
 
 	public static void runMenu() {
 		boolean goAgain = true;
-		System.out.println("--- Welcome to our awesome shopping list! ---");
+		System.out.println("Welcome to the Video Game database.");
 		while (goAgain) {
 			System.out.println("*  Select a game:");
 			System.out.println("*  1 -- Add a game");
@@ -95,14 +120,14 @@ public class StartProgram {
 			if (selection == 1) {
 				addAGame();
 			} else if (selection == 2) {
-				editAnItem();
+				editAGame();
 			} else if (selection == 3) {
-				deleteAnItem();
+				deleteAGame();
 			} else if (selection == 4) {
 				viewTheList();
 			} else {
 				// lih.cleanUp();
-				System.out.println("   Goodbye!   ");
+				System.out.println("  Thank you. Goodbye!   ");
 				goAgain = false;
 			}
 
@@ -112,8 +137,8 @@ public class StartProgram {
 
 	private static void viewTheList() {
 		List<ListGame> allGames = lgh.showAllGames();
-		for(ListGame singleGame: allGames) {
-			System.out.println(singleGame.returnGameDetails()+"\n");
+		for (ListGame singleGame : allGames) {
+			System.out.println(singleGame.returnGameDetails() + "\n");
 		}
 
 	}
