@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Time;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -102,8 +103,8 @@ public class ListGame {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setReleaseDate(LocalDate date) {
+		this.releaseDate = date;
 	}
 	
 	public String returnGameDetails() {

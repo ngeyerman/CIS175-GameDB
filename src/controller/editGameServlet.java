@@ -1,7 +1,11 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +49,11 @@ public class editGameServlet extends HttpServlet {
 		String genre = request.getParameter("genre");
 		String console = request.getParameter("console");
 		String publisher = request.getParameter("publisher");
-		//LocalDate date = request.getParameter("date");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+		String inputDate = request.getParameter("date");
+		LocalDate date = LocalDate.parse(inputDate, formatter);
+		
+		
 		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
@@ -54,7 +62,7 @@ public class editGameServlet extends HttpServlet {
 		gameToUpdate.setGenre(genre);
 		gameToUpdate.setGameConsole(console);
 		gameToUpdate.setPublisher(publisher);
-		//gameToUpdate.setReleaseDate(date);
+		gameToUpdate.setReleaseDate(date);
 		
 		lgh.updateGame(gameToUpdate);
 		
