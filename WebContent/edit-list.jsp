@@ -11,7 +11,7 @@
 <body>
 <form action = "editExistingListServlet" method="post">
 List Name: <input type = "text" name = "listName" value="${listToEdit.listName }"><br/>
-Gamer Name: <input type = "text" name = "gamerName" value"${listToEdit.gamer.gamerName}"><br/> 
+Gamer Name: <input type = "text" name = "gamerName" value="${listToEdit.gamer.gamerName}"><br/> 
 <input type = "hidden" name = "id" value = "${listToEdit.id }">
 Current Games:<br/>
 <select name="currentGames" multiple size="6">
