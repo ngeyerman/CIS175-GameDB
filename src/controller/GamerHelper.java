@@ -8,8 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.Gamer;
-import model.ListDetails;
-import model.ListGame;
 
 public class GamerHelper {
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("GameDB");
@@ -40,40 +38,51 @@ public class GamerHelper {
 		return found;
 	}
 	
+	// searchForGamerById - find a GAMER type in databse by the provided id
 	public Gamer searchForGamerById(int id) {
+		// create entity manager and open it
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
+		
+		// locate existing entity by id
 		Gamer found = em.find(Gamer.class, id);
+		
+		// close and return found
 		em.close();
 		return found;
 	}
 	
+	// updateGamer - updates persistence with toEdit entry
 	public void updateGamer(Gamer toEdit) {
-		// TODO Auto-generated method stub
+		// create entity manager and open it
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		
+		// merge toEdit with existing persistence
 		em.merge(toEdit);
+		
+		// commit and close
 		em.getTransaction().commit();
 		em.close();
 		
 	}
 	
+	// deleteGamer - updates persistence by removing toDelete entry
 	public void deleteGamer(Gamer toDelete) {
 		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<Gamer> typedQuery = em.createQuery("select gid from Gamer gid where gid.id = :selectedID", Gamer.class);
-		// Substitute parameter with actual data from the toDelete item
+		// alter query to reflect toDelete's id
 		typedQuery.setParameter("selectedID", toDelete.getId());
 
-		// we only want one result
+		// narrow it down to one result
 		typedQuery.setMaxResults(1);
 
-		// get the result and save it into a new list item
+		// grab single result
 		Gamer result = typedQuery.getSingleResult();
 
-		// remove it
+		// delete it from persistence
 		em.remove(result);
 		em.getTransaction().commit();
 		em.close();
