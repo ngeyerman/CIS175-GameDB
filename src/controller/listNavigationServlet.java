@@ -41,7 +41,7 @@ public class listNavigationServlet extends HttpServlet {
 		if (act == null) {// no button selected
 			getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 
-		} else if (act.contentEquals("delete")) {
+		} else if (act.equals("delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				ListDetails listToDelete = ldh.searchForListById(tempId);
@@ -76,8 +76,10 @@ public class listNavigationServlet extends HttpServlet {
 			} catch (NumberFormatException e) {
 				getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 			}
-		} else if(act.contentEquals("add")) {
-			getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
+		} else if (act.equals("add list")) {
+			
+			getServletContext().getRequestDispatcher("/addGamesForListServlet").forward(request, response);
+			
 			
 		}
 
