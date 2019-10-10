@@ -29,7 +29,7 @@ Remaining Games:<br/>
 </select>
 
 <br/>
-<input type = "submit" value="Edit List and Edit Games">
+<input type = "submit" value="Finish Edit"><input type = "button" value="Abandon Edit" onclick='window.location.assign("viewAllListsServlet");'>
 </form>
 <a href = "index.html"> Add a new game instead</a>
 </body>
