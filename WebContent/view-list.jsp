@@ -35,7 +35,7 @@
 </table>
 <input type = "submit" value = "edit" name="doThisToItem">
 <input type = "submit" value = "delete" name="doThisToItem">
-<input type="submit" value = "add" name = "doThisToItem">
+<input type="submit" value = "add list" name = "doThisToItem">
 </form>
 <a href="index.html">Add a game to the library</a>
 </body>

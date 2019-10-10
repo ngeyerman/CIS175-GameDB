@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit a game</title>
 </head>
 <body>
 <form action = "editGameServlet" method = "post">
@@ -13,7 +13,9 @@ Name: <input type="text" name = "name" value= "${gameToEdit.gameName}">
 Genre: <input type="text" name = "genre" value= "${gameToEdit.genre }">
 Console: <input type="text" name ="console" value= "${gameToEdit.gameConsole }">
 Publisher: <input type="text" name = "publisher" value ="${gameToEdit.publisher }">
-Date: <input type="text" name = "date" value = "${gameToEdit.releaseDate }">
+Release Date: Month: <input type="text" name = "month" value = "${gameToEdit.releaseDate }">
+			Day: <input type="text" name = "day" value = "${gameToEdit.releaseDate }">
+			Year: <input type="text" name = "year" value = "${gameToEdit.releaseDate }">
 
 <input type = "hidden" name = "id" value = "${gameToEdit.id }"	>
 <input type = "submit" value = "Save Edited Game">
