@@ -26,7 +26,7 @@ CREATE TABLE `gamer` (
   `GAMER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `GAMER_NAME` varchar(30) NOT NULL,
   PRIMARY KEY (`GAMER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `gamer` (
 
 LOCK TABLES `gamer` WRITE;
 /*!40000 ALTER TABLE `gamer` DISABLE KEYS */;
-INSERT INTO `gamer` VALUES (1,'Neil'),(2,'Neil'),(3,'Joe'),(4,'Pat');
+INSERT INTO `gamer` VALUES (1,'Neil'),(3,'Joe'),(6,'Neil');
 /*!40000 ALTER TABLE `gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `games` (
 
 LOCK TABLES `games` WRITE;
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
-INSERT INTO `games` VALUES (1,'Doom','Shooter','PC','',NULL),(2,'Zelda: Ocarina of Time','action-adventure','N64','Nintendo ',NULL),(6,'Minecraft','sandbox','Xbox 1','Mojang ',NULL),(7,'Skyrim','RPG','Playstation 3','',NULL);
+INSERT INTO `games` VALUES (1,'Doom','Shooter','PC','','1993-12-10'),(2,'Zelda: Ocarina of Time','action-adventure','N64','Nintendo ',NULL),(6,'Minecraft','Sandbox','Xbox 1','Mojang ',NULL),(7,'Skyrim','RPG','Playstation 3','','2011-11-11');
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `games_on_list` (
 
 LOCK TABLES `games_on_list` WRITE;
 /*!40000 ALTER TABLE `games_on_list` DISABLE KEYS */;
-INSERT INTO `games_on_list` VALUES (7,2),(6,2),(6,3),(7,3);
+INSERT INTO `games_on_list` VALUES (7,2),(6,2),(1,5),(2,5),(7,5);
 /*!40000 ALTER TABLE `games_on_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `list_details` (
   PRIMARY KEY (`LIST_ID`),
   KEY `GAMER_ID` (`GAMER_ID`),
   CONSTRAINT `list_details_ibfk_1` FOREIGN KEY (`GAMER_ID`) REFERENCES `gamer` (`GAMER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `list_details` (
 
 LOCK TABLES `list_details` WRITE;
 /*!40000 ALTER TABLE `list_details` DISABLE KEYS */;
-INSERT INTO `list_details` VALUES (1,'Brother\'s List',2),(2,'Joe\'s List',3),(3,'Pat list',4);
+INSERT INTO `list_details` VALUES (2,'Joe\'s List',3),(5,'My list',6);
 /*!40000 ALTER TABLE `list_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -130,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-09 23:25:24
+-- Dump completed on 2019-10-10 15:55:58
