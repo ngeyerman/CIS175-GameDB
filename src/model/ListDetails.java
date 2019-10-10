@@ -25,15 +25,18 @@ public class ListDetails {
 	private int id;
 	@Column(name = "LIST_NAME")
 	private String listName;
-	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "GAMER_ID")
 	private Gamer gamer;
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinTable(name = "GAMES_ON_LIST", joinColumns = {
-			@JoinColumn(name = "LIST_ID", referencedColumnName = "LIST_ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "GAME_ID", referencedColumnName = "ID", unique = true) })
-
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinTable
+		(
+				name = "GAMES_ON_LIST", 
+				joinColumns = { @JoinColumn(name = "LIST_ID",
+			referencedColumnName = "LIST_ID") },
+				inverseJoinColumns = {@JoinColumn(name = "GAME_ID", 
+			referencedColumnName = "ID", unique = true) }
+			)
 	private List<ListGame> listOfGames;
 
 	public ListDetails() {

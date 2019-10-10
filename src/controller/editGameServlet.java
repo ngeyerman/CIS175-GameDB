@@ -49,9 +49,11 @@ public class editGameServlet extends HttpServlet {
 		String genre = request.getParameter("genre");
 		String console = request.getParameter("console");
 		String publisher = request.getParameter("publisher");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+		
 		String inputDate = request.getParameter("date");
-		LocalDate date = LocalDate.parse(inputDate, formatter);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+		//LocalDate date = LocalDate.parse(inputDate, formatter);
 		
 		
 		
@@ -62,7 +64,7 @@ public class editGameServlet extends HttpServlet {
 		gameToUpdate.setGenre(genre);
 		gameToUpdate.setGameConsole(console);
 		gameToUpdate.setPublisher(publisher);
-		gameToUpdate.setReleaseDate(date);
+		//gameToUpdate.setReleaseDate(date);
 		
 		lgh.updateGame(gameToUpdate);
 		

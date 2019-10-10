@@ -41,9 +41,9 @@ public class addGameServlet extends HttpServlet {
 		String genre = request.getParameter("genre");
 		String console = request.getParameter("console");
 		String publisher = request.getParameter("publisher");
-		LocalDate date = LocalDate.parse(request.getParameter("date"));
+		//LocalDate date = LocalDate.parse(request.getParameter("date"));
 		
-		ListGame lg = new ListGame(name, genre, console, publisher, date);
+		ListGame lg = new ListGame(name, genre, console, publisher, null);
 		ListGameHelper lgh = new ListGameHelper();
 		lgh.insertGame(lg);
 		

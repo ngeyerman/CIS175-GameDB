@@ -13,7 +13,7 @@ Name: <input type="text" name = "name" value= "${gameToEdit.gameName}">
 Genre: <input type="text" name = "genre" value= "${gameToEdit.genre }">
 Console: <input type="text" name ="console" value= "${gameToEdit.gameConsole }">
 Publisher: <input type="text" name = "publisher" value ="${gameToEdit.publisher }">
-Date: <input type="text" name = "date" value = "${gameToEDit.date }">
+Date: <input type="text" name = "date" value = "${gameToEdit.releaseDate }">
 
 <input type = "hidden" name = "id" value = "${gameToEdit.id }"	>
 <input type = "submit" value = "Save Edited Game">
