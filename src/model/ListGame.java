@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.Time;
 import java.time.LocalDate;
 
 import javax.persistence.Column;

@@ -13,7 +13,6 @@
 		<table>
 			<c:forEach items="${requestScope.allGames }" var="currentgame">
 				<tr>
-
 					<td><input type="radio" name="id" value="${currentgame.id}"></td>
 					<td>${currentgame.gameName}</td>
 					<td>${currentgame.genre}</td>

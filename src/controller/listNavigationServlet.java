@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Gamer;
 import model.ListDetails;
 import model.ListGame;
 
@@ -45,7 +46,8 @@ public class listNavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				ListDetails listToDelete = ldh.searchForListById(tempId);
 				ldh.deleteItem(listToDelete);
-
+				GamerHelper gh = new GamerHelper();
+				gh.deleteGamer(listToDelete.getGamer());
 			} catch (NumberFormatException e) {
 				System.out.println("you must click a button");
 			} finally {
@@ -68,7 +70,6 @@ public class listNavigationServlet extends HttpServlet {
 						}
 					}
 				}
-
 				request.setAttribute("listToEdit", listToEdit);
 				request.setAttribute("allGamesToAdd", allGames);
 				getServletContext().getRequestDispatcher("/edit-list.jsp").forward(request, response);
@@ -76,7 +77,7 @@ public class listNavigationServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 			}
 		} else if(act.contentEquals("add")) {
-			getServletContext().getRequestDispatcher("/addGamesForListServlet").forward(request, response);
+			getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
 			
 		}
 

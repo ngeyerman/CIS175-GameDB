@@ -62,16 +62,9 @@ public class editExistingListServlet extends HttpServlet {
 		
 		//update gamer
 		String gamerName = request.getParameter("gamerName");
-		Gamer gamer;
-		try {
-			gamer = gh.searchForGamerByName(gamerName);
-		} catch(NoResultException ex) {
-			gamer = new Gamer(gamerName);
-		} catch(Exception ex) {
-			gamer = new Gamer(gamerName);
-		}
-		toEdit.setGamer(gamer);
-		
+		Gamer gamer = toEdit.getGamer();
+		gamer.setGamerName(gamerName);
+		gh.updateGamer(gamer);
 		
 		//update list of items
 		List<ListGame> previousListOfGames = toEdit.getListOfGames();
