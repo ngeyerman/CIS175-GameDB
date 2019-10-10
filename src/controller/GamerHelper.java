@@ -1,17 +1,15 @@
+// by Neil Geyerman and Daniel Draper, artefacted from Kelli Kleindorfer's lab.
 package controller;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 import model.Gamer;
 
 public class GamerHelper {
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("GameDB");
 	
+	// insertGamer - insert provided GAMER entry into the database
 	public void insertGamer(Gamer g) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
@@ -20,14 +18,15 @@ public class GamerHelper {
 		em.close();
 	}
 	
-	public List<Gamer> showAllGamers() { // list to show all gamer lists in database
+	 // showAllGamers - returns a LIST<Gamer> of all GAMER entries in the database
+	public List<Gamer> showAllGamers() {
 		EntityManager em = emfactory.createEntityManager();
 		List<Gamer> allGamers = em.createQuery("SELECT g FROM Gamer g").getResultList();
 		return allGamers;
 	}
 
+	// searchForGamerByName - find a GAMER type in database from the provided name
 	public Gamer searchForGamerByName(String gamerName) {
-		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Gamer> typedQuery = em.createQuery("select g from gamer g where g.gamerName = :selectedName", Gamer.class);
 		typedQuery.setParameter("selectedName", gamerName);
@@ -38,7 +37,7 @@ public class GamerHelper {
 		return found;
 	}
 	
-	// searchForGamerById - find a GAMER type in databse by the provided id
+	// searchForGamerById - find a GAMER type in database from the provided id
 	public Gamer searchForGamerById(int id) {
 		// create entity manager and open it
 		EntityManager em = emfactory.createEntityManager();
