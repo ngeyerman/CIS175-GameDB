@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -41,11 +40,8 @@ public class addGameServlet extends HttpServlet {
 		String genre = request.getParameter("genre");
 		String console = request.getParameter("console");
 		String publisher = request.getParameter("publisher");
-		
-		
-		LocalDate.parse(request.getParameter("date"));
-		
-		ListGame lg = new ListGame(name, genre, console, publisher, null);
+		LocalDate ld = LocalDate.parse(request.getParameter("year") + "-" + request.getParameter("month") + "-" + request.getParameter("day"));
+		ListGame lg = new ListGame(name, genre, console, publisher, ld);
 		ListGameHelper lgh = new ListGameHelper();
 		lgh.insertGame(lg);
 		

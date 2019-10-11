@@ -71,4 +71,8 @@
    <version>1.2</version> 
 </dependency>
   </dependencies>
+    <properties>
+    	<SQL_UN>root</SQL_UN>
+    	<SQL_PW>brisknite1</SQL_PW>
+    </properties>
 </project>
