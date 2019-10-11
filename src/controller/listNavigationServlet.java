@@ -66,7 +66,6 @@ public class listNavigationServlet extends HttpServlet {
 				for (int i = 0; i < allGames.size(); i++) {
 					for (int j = 0; j < currentListGames.size(); j++) {
 						if (allGames.get(i).getId() == currentListGames.get(j).getId()) {
-							System.out.println("search");
 							allGames.remove(i);
 						}
 					}

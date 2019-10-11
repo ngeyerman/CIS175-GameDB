@@ -84,9 +84,6 @@ public class editExistingListServlet extends HttpServlet {
 		
 		toEdit.setListOfGames(previousListOfGames);
 		ldh.updateList(toEdit);
-		
-		System.out.println("Success!");
-		System.out.println(toEdit.toString());
 	
 		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 		
