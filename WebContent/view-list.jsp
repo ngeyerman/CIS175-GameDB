@@ -20,14 +20,14 @@
 		</tr>
 		<tr>
 			<td>
-				${currentlist.gamer.gamerName}
+			Gamer Name:	${currentlist.gamer.gamerName}
 			<c:forEach var = "listVal" items = "${currentlist.listOfGames}">
 				<tr>
 					<td>Title: ${listVal.gameName}</td>
-					<td>${listVal.genre}</td>
-					<td>${listVal.gameConsole}</td>
-					<td>${listVal.publisher}</td>
-					<td>${listVal.releaseDate}</td>
+					<td>Genre: ${listVal.genre}</td>
+					<td>Console: ${listVal.gameConsole}</td>
+					<td>Publisher: ${listVal.publisher}</td>
+					<td>Release Date: ${listVal.releaseDate}</td>
 			 	</tr>
 			</c:forEach>
 		</td>
