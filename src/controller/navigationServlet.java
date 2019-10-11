@@ -62,6 +62,9 @@ public class navigationServlet extends HttpServlet {
 			try {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			ListGame gameToEdit =lgh.searchForGameById(tempId);
+			//String month = request.getParameter("month"); //trying to update edit-game jsp to not include entire release date in each input section
+			//String day = request.getParameter("day");
+			//String year = request.getParameter("year");
 			request.setAttribute("gameToEdit", gameToEdit);
 			getServletContext().getRequestDispatcher("/edit-game.jsp").forward(request, response);
 			}catch (NumberFormatException e) {
