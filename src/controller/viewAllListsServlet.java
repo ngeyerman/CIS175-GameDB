@@ -34,7 +34,7 @@ public class viewAllListsServlet extends HttpServlet {
 		List<ListDetails> abc = slh.getLists();
 		request.setAttribute("allLists", abc);
 		if(abc.isEmpty()){
-			request.setAttribute("allLists", " ");
+			request.setAttribute("allLists", "empty");
 		}
 		getServletContext().getRequestDispatcher("/view-list.jsp").forward(request, response);
 	}

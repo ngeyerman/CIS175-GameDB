@@ -1,4 +1,4 @@
-
+// by Neil Geyerman, comments by Daniel Draper, artefacted from Kelli Kleindorfer's lab.
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,8 +10,9 @@ public class StartProgram {
 	static Scanner in = new Scanner(System.in);
 	static ListGameHelper lgh = new ListGameHelper();
 
+	// addAGame() - add a GAME to persistence database via menu-driven interface
 	private static void addAGame() {
-		// TODO Auto-generated method stub
+		// get name/genre/console from user
 		System.out.print("Enter the name of a game: ");
 		String name = in.nextLine();
 		System.out.print("Enter a genre: ");
@@ -19,23 +20,25 @@ public class StartProgram {
 		System.out.println("Enter the console type: ");
 		String console = in.nextLine();
 
+		// add information to persistence
 		ListGame toAdd = new ListGame(name, genre, console);
 		lgh.insertGame(toAdd);
 
 	}
 
+	// deleteAGame() - delete a GAME from persistence database via menu-driven interface
 	private static void deleteAGame() {
-		// TODO Auto-generated method stub
+		// get title from user
 		System.out.print("Enter the game to delete: ");
 		String game = in.nextLine();
 
+		// delete game from persistence
 		ListGame toDelete = new ListGame(game);
 		lgh.deleteGame(toDelete);
 	}
 
+	// editAGame() - edit a GAME in persistence database via menu-driven interface
 	private static void editAGame() {
-		// TODO Auto-generated method stub
-		
 		System.out.println("How would you like to search? ");
 		System.out.println("1 : Search by Game");
 		System.out.println("2 : Search by Genre");
@@ -97,12 +100,13 @@ public class StartProgram {
 
 	}
 
+	// main() - program entry point
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		runMenu();
 
 	}
 
+	// runMenu() - menu-driven interface to add, update, delete and maintain persistence gameDB database
 	public static void runMenu() {
 		boolean goAgain = true;
 		System.out.println("Welcome to the Video Game database.");
@@ -135,6 +139,7 @@ public class StartProgram {
 
 	}
 
+	// viewTheList() - view persistence database game list
 	private static void viewTheList() {
 		List<ListGame> allGames = lgh.showAllGames();
 		for (ListGame singleGame : allGames) {

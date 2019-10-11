@@ -24,7 +24,9 @@
 		</table>
 		<input type="submit" value="edit" name="doThisToItem"> 
 		<input type="submit" value="delete" name="doThisToItem"> 
-		<input type="submit" value="add" name="doThisToItem">
+		<input type="submit" value="add" name="doThisToItem"><br>
+		<a href ="viewAllListsServlet">View all game lists</a><br>
+		<a href ="addGamesForListServlet">Create a new game list</a>
 	</form>
 </body>
 </html>
