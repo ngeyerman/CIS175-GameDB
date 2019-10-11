@@ -63,11 +63,14 @@ public class listNavigationServlet extends HttpServlet {
 				List<ListGame> currentListGames = listToEdit.getListOfGames();
 
 				System.out.println("--------After removing items--------");
-				for (int i = 0; i < allGames.size(); i++) {
-					for (int j = 0; j < currentListGames.size(); j++) {
+				for (int i = allGames.size()-1; i > 0; i--) {
+					for (int j = currentListGames.size()-1; j >= 0; j--) {
 						if (allGames.get(i).getId() == currentListGames.get(j).getId()) {
-							System.out.println("search");
 							allGames.remove(i);
+							if(i==0) break;
+							// reset loop
+							i--;
+							j = currentListGames.size();
 						}
 					}
 				}

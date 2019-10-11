@@ -36,9 +36,6 @@ public class createNewListServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		ListGameHelper lgh = new ListGameHelper();
 		String listName = request.getParameter("listName");
-		
-		System.out.println("List Name: " +listName);
-		
 		String gamerName = request.getParameter("gamerName");
 		
 		String[] selectedGames = request.getParameterValues("allGamesToAdd");
