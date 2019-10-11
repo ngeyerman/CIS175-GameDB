@@ -13,12 +13,12 @@ Name: <input type="text" name = "name" value= "${gameToEdit.gameName}">
 Genre: <input type="text" name = "genre" value= "${gameToEdit.genre }">
 Console: <input type="text" name ="console" value= "${gameToEdit.gameConsole }">
 Publisher: <input type="text" name = "publisher" value ="${gameToEdit.publisher }">
-Release Date: Month: <input type="text" name = "month" value = "${gameToEdit.releaseDate }">
+<br>Release Date: <br>Month: <input type="text" name = "month" value = "${gameToEdit.releaseDate }">
 			Day: <input type="text" name = "day" value = "${gameToEdit.releaseDate }">
-			Year: <input type="text" name = "year" value = "${gameToEdit.releaseDate }">
+			Year: <input type="text" name = "year" value = "${gameToEdit.releaseDate }"><br>
 
 <input type = "hidden" name = "id" value = "${gameToEdit.id }"	>
-<input type = "submit" value = "Save Edited Game">
+<input type = "submit" value = "Save Edited Game"><input type = "button" value="Abandon Edit" onclick='window.location.assign("viewAllGamesServlet");'>
 </form>
 
 </body>
