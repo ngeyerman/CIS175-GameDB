@@ -42,48 +42,59 @@ public class editExistingListServlet extends HttpServlet {
 		
 		//search for object to change
 		int idToEdit = Integer.parseInt(request.getParameter("id"));
-		ListDetails toEdit = ldh.searchForListById(idToEdit);
+		ListDetails listToEdit = ldh.searchForListById(idToEdit);
 		
 		//update list name
 		String listName = request.getParameter("listName");
 		System.out.println("List Name: " +listName);
-		toEdit.setListName(listName);
-		
-		/*update the date
-		String month = request.getParameter("month");
-		String day = request.getParameter("day");
-		String year = request.getParameter("year");
-		
-		LocalDate ld;
-		ld = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
-	
-		toEdit.setReleaseDate(ld);
-		*/
+		listToEdit.setListName(listName);
 		
 		//update gamer
 		String gamerName = request.getParameter("gamerName");
-		Gamer gamer = toEdit.getGamer();
+		Gamer gamer = listToEdit.getGamer();
 		gamer.setGamerName(gamerName);
 		gh.updateGamer(gamer);
 		
 		//update list of items
-		List<ListGame> previousListOfGames = toEdit.getListOfGames();
+		List<ListGame> previousListOfGames = listToEdit.getListOfGames();
 		
-		String[] selectedGames = request.getParameterValues("gamesToAdd");
+		String[] toAdd = request.getParameterValues("gamesToAdd");
 		List<ListGame> selectedGamesInList = new ArrayList<ListGame>();
 		
-		if(selectedGames != null && selectedGames.length>0) {
-			for(int i =0; i < selectedGames.length; i++) {
-			System.out.println(selectedGames[i]);
-			ListGame c = lgh.searchForGameById(Integer.parseInt(selectedGames[i]));
-			selectedGamesInList.add(c);
+		if(toAdd != null && toAdd.length>0) {
+			for(int i =0; i < toAdd.length; i++) {
+				System.out.println("Adding:" + toAdd[i]);
+				ListGame c = lgh.searchForGameById(Integer.parseInt(toAdd[i]));
+				selectedGamesInList.add(c);
 			}	
 			
 			previousListOfGames.addAll(selectedGamesInList);
 		}
 		
-		toEdit.setListOfGames(previousListOfGames);
-		ldh.updateList(toEdit);
+		String[] toRemove= request.getParameterValues("currentGames");
+		
+		if(toRemove != null && toRemove.length > 0) {
+			selectedGamesInList = new ArrayList<ListGame>();
+			for(int i =0; i < toRemove.length; i++) {
+				System.out.println("Removing:" + toRemove[i]);
+				for(ListGame g : previousListOfGames) {
+					if(g.getId() == Integer.parseInt(toRemove[i])) {
+						previousListOfGames.remove(g);
+						break;
+					}
+				}
+				/*ListGame c = lgh.searchForGameById(Integer.parseInt(toRemove[i]));
+				if(selectedGamesInList.indexOf(c) != -1) {
+					System.out.println("Found it:" + toRemove[i]);
+					selectedGamesInList.remove(selectedGamesInList.indexOf(c));
+				}
+				selectedGamesInList.add(c);*/
+			}
+			//previousListOfGames.removeAll(selectedGamesInList);
+		}
+		
+		listToEdit.setListOfGames(previousListOfGames);
+		ldh.updateList(listToEdit);
 	
 		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 		
