@@ -23,6 +23,5 @@
 <input type = "hidden" name = "id" value = "${gameToEdit.id }"	>
 <input type = "submit" value = "Save Edited Game"><input type = "button" value="Abandon Edit" onclick='window.location.assign("viewAllGamesServlet");'><br>
 </form>
-
 </body>
 </html>
